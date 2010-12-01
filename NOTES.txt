@@ -34,7 +34,7 @@ Just mind my copyright and give credit where credit is due.
 
 DEPENDENCIES
 
-JRuby (http://jruby.codehaus.org/)
+JRuby (http://jruby.org/)
   The 100% Java implementation of Ruby. 
   JRuby in turn depends on other libraries. I included the license info
   for bsf.jar under the license folder. You can find license info for
@@ -48,7 +48,7 @@ midilib (http://midilib.rubyforge.org/)
     
 ------------------------------------------------------------------------------    
 
-Copyright (c) 2008-2010, Adam Murray (adam@compusition.com). 
+Copyright (c) 2008-2011, Adam Murray (adam@compusition.com). 
  
 All rights reserved.
 
