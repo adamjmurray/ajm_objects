@@ -17,8 +17,8 @@ LIB     = 'lib'
 PATCHES = 'ajm'
 LICENSE = 'license'
 BUILD   = 'build'
-PACKAGE = "ajm-objects-#{VERSION}"
 DIST    = 'dist'
+PACKAGE = "#{DIST}/ajm-objects-#{VERSION}"
 
 SOURCES   = FileList["#{SRC}/**/*.java"].exclude(/Test\.java$/)
 CLASSPATH = FileList["#{LIB}/**/*.jar"].exclude(/^ajm.jar$/)
@@ -28,7 +28,7 @@ JAR       = "#{LIB}/ajm.jar"
 ##############################################################################
 # TASK DEFINITIONS
 
-CLEAN.include BUILD, JAR, 'ajm-objects-*' # The -* takes care of deleting old PACKAGE folders when bumping the version number
+CLEAN.include BUILD, JAR
 CLOBBER.include DIST
 
 
@@ -53,6 +53,7 @@ desc 'prepare the files for distribution'
 task :package => [:jar] do
   puts "Preparing distribution package"
   package_lib = "#{PACKAGE}/#{LIB}"  
+  mkdir DIST
   mkdir PACKAGE
   mkdir package_lib
   
