@@ -21,5 +21,4 @@ Tested on OS X Leopard & Snow Leopard, Windows XP, and with Max for Live.
 
 ## Future ##
 
-* ajm.ruby will be split off into a separate project soon, because most people only use ajm objects
-  for this one object. It will be easier for me to maintain and support one object.
+* ajm.ruby is being split off into a separate project at <http://github.com/adamjmurray/jruby_for_max> so I can focus on development of that object, and not require installation of all these objects for people who are only interested in scripting Max with Ruby.
