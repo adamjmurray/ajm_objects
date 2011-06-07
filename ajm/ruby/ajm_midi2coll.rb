@@ -1,7 +1,6 @@
 require 'midilib/sequence'
 
 VALID_BEAT_UNITS = [1,2,4,8,16]
-TICKS_PER_QUARTER_NOTE = 480
 
 inlet_assist 'read/timesig/quantize'
 outlet_assist 'note data in coll format', 'track index', 'number of tracks'
@@ -73,9 +72,8 @@ end
 class Midi2Coll
   
   def initialize(midi_file, beats_per_bar=4, beat_unit=4, quantize_in_ticks=nil, cc_filter=false)
-    @midi_file = midi_file # TODO validate (meh, currently this is handled by the ajm.cosy abstraction)
+    @midi_file = midi_file # TODO validate 
     @track_tick_maps = []
-    @ticks_per_beat = (4.0/beat_unit * TICKS_PER_QUARTER_NOTE).to_i
     @beats_per_bar = beats_per_bar.to_i
     @quantize = quantize_in_ticks
     @cc_filter = cc_filter
@@ -85,7 +83,8 @@ class Midi2Coll
     File.open(@midi_file, 'rb') do |file|
       @sequence.read(file) 
     end
-    
+    @ticks_per_beat = @sequence.ppqn.to_i
+
     @sequence.tracks.each_with_index do |track,index|
       @track_tick_maps[index] = @tick_map = {}
       @pitch_map = {}
